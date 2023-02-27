@@ -1,7 +1,7 @@
 # Modelisation of climate change consequences
 
-Project Title: Modelisation of climate change consequences 🌀 🌏
-Technologies Used: Java, Object oriented programming, Git
+Project Title: Modelisation of climate change consequences 🌀 🌏\
+Technologies Used: Java, Object oriented programming, Git\
 Description: I aimed to modelise climate change made by C02 emmisions and how much effort it would take to reverse its consequences. 
 I scaled real data - 20x20 grid represents the area od Paris and co2 quantities are proportionally to what Paris could take on. 
 
