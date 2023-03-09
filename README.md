@@ -1,4 +1,4 @@
-# Modelisation of climate change 🌀 🌏
+# Modelisation of climate change and its consequences🌀 🌏
 #### This project is a simulation of climate change, CO2 dispersion and outside factors. 
 ##### Technologies Used: Java, Object oriented programming, Git
 ##### Functions are commented on in - 
