@@ -1,7 +1,9 @@
 # Modelisation of climate change and its consequences🌀 🌏
 #### This project is a simulation of climate change, CO2 dispersion and outside factors. 
 ##### Technologies Used: Java, Object oriented programming, Git
-#####  Methods 
+
+## Documentation 
+To access documentation head to the doc folder and click package-summary.html
 
 ## Description 
 I aimed to modelise climate change made by C02 emmisions and how much effort it would take to reverse its consequences. 
