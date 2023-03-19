@@ -1,4 +1,3 @@
-
 public class CoalMine extends Ressource implements impactOnClimateChange {
 
     //variable pour la quantité de dioxyde de carbone que la mine émet dans l’air

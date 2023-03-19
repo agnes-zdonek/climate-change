@@ -1,5 +1,3 @@
-
-
 public class TestSimulation {
     public static void main(String[] args)throws InvalidInputException {
         Simulation sim = new Simulation(1, 21, -299, 2990);
