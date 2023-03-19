@@ -10,8 +10,46 @@ Two types of agents interact with Earth - good ones plant forests and close mine
 Firstly, we enter a period of unsupervised mining after which two types of agents interact until the chemical balance is restored or there cannot be more forests planted. 
 In the end we find out how many years it took to reverse climate changes on our grid.
 
-## Instalation
-Download the files and unpack them. ---
+## Class diagram
+
+```mermaid
+graph LR
+A["(class) Tree"] --o |Nested| B["(class) Forest"]
+B --> |Inheritance| C["(abstract class) Flora"]
+C --> |Inheritance| D["(precompiled class) Ressource"]
+E["(class) CoalMine"] --> |Inheritance| D["(precompiled class) Ressource"]
+D --o |Nested| F["(precompiled class) Terrain"]
+D -.-> |Extends| G["(interface) ImpactOnTerrain"]
+
+F --o |Nested| H["(class) Earth"]
+H --o |Nested| I["(class) Simulation"]
+
+J["(class) Agent"]
+J --> |Extends| G
+J --> |Nested| I
+
+I -.-> |Throws exception| K[" (exception class) InvalidInputException "]
+
+style A stroke:#6cc570,stroke-width:10px
+style B stroke:#6cc570,stroke-width:10px
+style C stroke:#fdd023,stroke-width:10px
+style D stroke:#f8d3dc,stroke-width:10px
+style E stroke:#6cc570,stroke-width:10px
+style F stroke:#f8d3dc,stroke-width:10px
+style G stroke:#ff1493,stroke-width:10px
+style H stroke:#6cc570,stroke-width:10px
+style I stroke:#6cc570,stroke-width:10px
+style J stroke:#6cc570,stroke-width:10px
+style K stroke:#1ad0f6,stroke-width:10px
+
+```
+
+## Instalation and running
+Download the files and unpack them.
+Place yourself in a directory where you have a `src` sub-directory.
+`cd src`               
+`javac  -d bin  *.java`
+`java -cp bin TestSimulation` 
 
 
 ## Credits
