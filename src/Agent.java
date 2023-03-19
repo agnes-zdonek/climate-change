@@ -104,7 +104,7 @@ public class Agent{
      * each action generates an amount of co2 we can absorb to better the enviroment
      * 
      * @param carbon - array of carbon dioxide - tells us how much carbon there is in each place in a grid
-     * @param carbonAvreage - an avreage of carbon dioxide in one place on a grid
+     * @param carbonAvrege - an avreage of carbon dioxide in one place on a grid
      * @param carbonGoal - a desired amount of carbon dioxide in one place on a grid
      * @param agent - a list of one type of agents - good agents
      * @param earth - our enviroment which contains a grid

@@ -11,6 +11,7 @@ public class CoalMine extends Ressource implements impactOnClimateChange {
 
     /**
      * contructor that initialises a coal mine
+     * @param type name of a coal mine
      */
     public CoalMine(String type){
         super(type, 1);
@@ -18,6 +19,7 @@ public class CoalMine extends Ressource implements impactOnClimateChange {
 
     /**
      * contructor that initialises a coal mine
+     * @param type name of a coal mine
      * @param carbonProduction how much CO2 does a mine produce
      */
     public CoalMine(String type, long carbonProduction){

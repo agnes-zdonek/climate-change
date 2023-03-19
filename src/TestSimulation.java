@@ -2,7 +2,17 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 
+/**
+ * Simulates the climate of Paris using Simulation class methodss
+ */
+
 public class TestSimulation {
+    /**
+     * Simulates the climate of Paris
+     * @param args command line arguments
+     * @throws InvalidInputException for command line argumnets
+     * @throws IOException file handling
+     */
     public static void main(String[] args)throws InvalidInputException, IOException {
         
         int checkForInt;
@@ -22,7 +32,7 @@ public class TestSimulation {
         }
         
 
-        System.out.println("All termianl output is in TerminalOutput directory in the src folder");
+        System.out.println("All terminal output is in TerminalOutput directory in the src folder");
 
         File file = new File("./TerminalOutput/terminal.log");
         PrintStream stream = new PrintStream(file);

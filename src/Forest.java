@@ -29,7 +29,7 @@ public class Forest extends Flora implements impactOnClimateChange{
     /**
      * constructor for a Forest, initialises quantite number of trees
      * @param type - name for a forest
-     * @param quantitie - number of trees
+     * @param quantite - number of trees
      */
     public Forest(String type, int quantite){
         super(type, quantite);

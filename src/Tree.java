@@ -18,6 +18,7 @@ public class Tree {
   
     /**
      * constructor, creates a tree with a given age
+     * @param age - age of a tree
      */
     public Tree(int age) {
       this.age = age;
