@@ -30,17 +30,17 @@ J --> |Nested| I
 
 I -.-> |Throws exception| K[" (exception class) InvalidInputException "]
 
-style A stroke:#6cc570,stroke-width:10px
-style B stroke:#6cc570,stroke-width:10px
-style C stroke:#fdd023,stroke-width:10px
-style D stroke:#f8d3dc,stroke-width:10px
-style E stroke:#6cc570,stroke-width:10px
-style F stroke:#f8d3dc,stroke-width:10px
-style G stroke:#ff1493,stroke-width:10px
-style H stroke:#6cc570,stroke-width:10px
-style I stroke:#6cc570,stroke-width:10px
-style J stroke:#6cc570,stroke-width:10px
-style K stroke:#1ad0f6,stroke-width:10px
+style A stroke:#6cc570,stroke-width:7px
+style B stroke:#6cc570,stroke-width:7px
+style C stroke:#fdd023,stroke-width:7px
+style D stroke:#f8d3dc,stroke-width:7px
+style E stroke:#6cc570,stroke-width:7px
+style F stroke:#f8d3dc,stroke-width:7px
+style G stroke:#ff1493,stroke-width:7px
+style H stroke:#6cc570,stroke-width:7px
+style I stroke:#6cc570,stroke-width:7px
+style J stroke:#6cc570,stroke-width:7px
+style K stroke:#1ad0f6,stroke-width:7px
 
 ```
 
