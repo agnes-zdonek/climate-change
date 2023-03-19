@@ -1,25 +1,42 @@
+/***
+ * CoalMine is a coal mine. It generates C02 into our grid/enviroment
+ */
+
 public class CoalMine extends Ressource implements impactOnClimateChange {
 
-    //variable pour la quantité de dioxyde de carbone que la mine émet dans l’air
+    /**
+     * @param carbonProduction how much CO2 does a mine produce
+     */
     private long carbonProduction =  -999999999;
 
-    //constructeur qui crée une mine
+    /**
+     * contructor that initialises a coal mine
+     */
     public CoalMine(String type){
         super(type, 1);
     }
 
-    //constructeur qui crée une mine
+    /**
+     * contructor that initialises a coal mine
+     * @param carbonProduction how much CO2 does a mine produce
+     */
     public CoalMine(String type, long carbonProduction){
         super(type, 1);
         this.carbonProduction = carbonProduction;
     }
 
-    //cette fonction renvoie la quantité de sioxyde de carbone émise dans l’air par année
+    /***
+     * how much of CO2 a mine produces during one year
+     * @return how much CO2 a mine produces during one year
+     */
     public long impactOnTerrain(){ 
         return carbonProduction; 
     }
 
-    //mutateur pour la variable carbonProduction
+    /***
+     * sets new amount of CO2 a mine produces during one year
+     * @param carbonProduction amount of CO2 a mine produces during one year
+     */
     public void setCarbonProduction(long carbonProduction){
         this.carbonProduction = carbonProduction;
     }

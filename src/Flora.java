@@ -1,18 +1,31 @@
+
+/**
+ * abstract class Flora represents any type of greenery 
+ * it was created to create classes similar to forests in the future ex: meadows, parks
+ */
 public abstract class Flora extends Ressource{
    
-   /* cette classe abstraite a été créée afin qu'à l'avenir 
-   il soit plus facile de créer des ressources plus simmilaires (par exemple parcs, prairies)
-   */
+   
 
-   //constructeur pour la classe
+   /**
+    * constructor for Flora
+    * @param type type - ex forest, meadow etc or a name 
+    * @param quantite - how many flora do we want to construct
+    */
    public Flora(String type, int quantite){
     super(type, quantite);
    }
 
-   //cette fonction prend un arbre et ajoute cet arbre à notre ressource
+   /**
+    * plants a tree 
+    * @param tree tree
+    */
    public abstract void plantTree(Tree tree);
 
-   //accesseur pour pour la quantité maximale de dioxyde de carbone qu’une ressource peut détruire
+   /**
+    * how much carbon can one instace get rid of in a year
+    * @return how much carbon can one instace get rid of in a year
+    */
    public abstract int getMaxcarbon();
    
 

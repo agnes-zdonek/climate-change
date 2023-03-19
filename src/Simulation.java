@@ -1,16 +1,28 @@
 import java.util.ArrayList;
 
-
-
+/**
+ * regroups all the classes to produce a simulation where forests can be planted, can grow and coal mines work
+ * agents interact and fight for their goals
+ */
 public class Simulation {
 
-  /*mf - nombre de forêts 
-  mm - nombre de mines
-  ng - nombre d’agents qui aide
- nb - qui détruisent */
-
+  /**
+   * @param mf - number of forests
+   * @param mm - number of coal mines
+   * @param ng - number of eco friendly agents
+   * @param nb - number of agents damaging our earth
+   */
   private int mf, mm, ng, nb;
 
+  /**
+   * initialises a simulation of an earth with given arguments
+   * if arguments aren't given within a range, program throws an exception and in the catch modyfies them 
+   * 
+   * @param mf - number of forests
+   * @param mm - number of coal mines
+   * @param ng - number of eco friendly agents
+   * @param nb - number of agents damaging our earth
+   */
   public Simulation(int mf, int mm, int ng, int nb){
 
     int[] temp = new int[4];
@@ -30,8 +42,8 @@ public class Simulation {
       this.nb = nb;
 
     } catch (InvalidInputException iie) {
-      System.out.println("Chaque argument doit etre > 0 et <=20");
-      System.out.println("Les valeurs <= 0 -> deviennent 5, les valeurs > 20 deviennent 10");
+      System.out.println("All numbers must be between > 0 and <=20\n");
+      System.out.println("Values <= 0 -> become 5, values > 20 become 10");
 
       for(int i = 0; i < temp.length; i++){
         if(temp[i]<=0){temp[i] = 5;}
@@ -51,6 +63,15 @@ public class Simulation {
    
   }
   
+  /**
+   * simulates climate changes in our enviroment
+   * we contrustruct an earth and a list of all ressources (forests and coal mines)
+   * we initialise forests in  @param mf number, coal mines in @param mm number, eco agents in @param ng number and bad agents in @param nb number
+   * each year coal mines produce CO2, forests grow and new trees are planted by seed dispersal
+   * after a century of upsupervised mining too much CO2 will be in the air
+   * now eco friendly agents and damadging agents do their assigned taskts utill we get an amount of carbon that our earth can sustain
+   *  
+   */
   public void simulateClimateChange() {
 
 
@@ -89,13 +110,13 @@ public class Simulation {
         agents.addAll(goodAgents);
         agents.addAll(badAgents);
 
-    System.out.println("Terrain au debut d'une simulation");
+    System.out.println("Paris at the beggining of the simulation");
     for(Forest f : forests){
       System.out.println(f);
     }
     earth.afficheEarth();
     System.out.println("------------------------------------------------");
-    System.out.println("Nous commencons un siecle de croissance forestiere sans surveillance et d'exploitation miniere illimitee...");
+    System.out.println("We begin a century of Forests' growth and unsupervised mining...");
 
     long [][] carbon = new long[20][20];
         for(int year = 0; year < 100; year++){
@@ -110,13 +131,13 @@ public class Simulation {
             earth.carbonDispersion(carbon);
     }
 
-    System.out.println("Terrain apres");
+    System.out.println("Paris after a century");
     earth.afficheEarth();
-    System.out.println("Combien de dioxyde de carbone nous avons en moyenne dans une case :" + earth.carbonAvrege(carbon));
-    System.out.println("combien notre terre peut supporter" + earth.carbonGoal(carbon));
+    System.out.println("How much CO2 there is on avreage in one case:" + earth.carbonAvrege(carbon));
+    System.out.println("How much can Paris sustain: " + earth.carbonGoal(carbon));
 
-    System.out.println("------------------------------------------------");
-    System.out.println("Maintenant les bons agents vont essayer de regler la situation mais ils doivent travailler aux cotes des agents qui detruisent leur travail");
+    System.out.println("\n******************\n");
+    System.out.println("Now eco friendly agents and damadging agents will do their work!");
 
     int yearsittook = 0;
 
@@ -143,10 +164,10 @@ public class Simulation {
   yearsittook++;
   }
 
-  System.out.println("il a fallu "+ yearsittook+ " annees pour regler la situation");
+  System.out.println("It took "+ yearsittook+ " years to balance CO2 in the atmosphere");
   earth.afficheEarth();
 
-  System.out.println("Combien de dioxyde de carbone nous avons en moyenne dans une case :" + earth.carbonAvrege(carbon));
+  System.out.println("How much CO2 there is on avreage in one case :" + earth.carbonAvrege(carbon));
   
 
   

@@ -1,42 +1,69 @@
 import java.util.ArrayList;
 
+/**
+* Agents move on the grid and renforce/stop climate change based on Agent's role
+*/
+
 public class Agent{
 
-    /*
-    x, y - coordonnées d’un agent
-    nbDep - combien de fois il a déménagé 
+    /**
+    * @param x first coordinate
+    * @param y second coordinate
+    * @param nbDep number of trips made
     */
     private int x,y,nbDep;
 
-    //constructeur
+    /**
+     * contructor that initialises an Agent
+     * they start to exist but aren't placed on a grid
+     */
     public Agent(){
         x = -1;
         y = -1;
         nbDep = 0;
     }
 
-    //constructeur
+    /**
+     * contructor that initialises an Agent on given coordinates
+     * @param x first coordinate
+     * @param y second coordinate
+     */
     public Agent(int x, int y){
         this.x = x;
         this.y = y;
         nbDep = 0;
     }
 
-    //accesseur pour x 
+    /**
+     * returns coordinate x
+     * @return x first coordinate
+     */
     public int getAgentX(){
         return x;
     }
 
-    //accesseur pour y
+    /**
+     * returns coordinate y
+     * @return y second coordinate
+     */
     public int getAgentY(){
         return y;
     }
 
-    //accesseur pour nbDep
+    /**
+     * returns number of trips made
+     * @return nbDep number of trips made
+     */
     public int getNumDeplacements(){
         return nbDep;
     }
 
+    /** 
+     * returns distace between the place where Agent is now and some other place in the grid
+     * @param x first coordinate
+     * @param y second coordinate
+     * @return distace between the place where Agent is now and some other place in the grid
+     */
     public double distance(int x, int y){
         int a = Math.abs(this.x - x);
         int b = Math.abs(this.y - y);
@@ -44,7 +71,13 @@ public class Agent{
     }
 
     
-
+    /**
+     * returns true if there is an agent on given coordinates, else returns false, if there isn't an Agent on a given place, current Agent makes a trip to that given place
+     * @param xnew first coordinate
+     * @param ynew second coordinate
+     * @param agent list of Agents
+     * @return true or false
+     */
     public boolean seDeplacer(int xnew, int ynew, ArrayList<Agent> agent){
         for(Agent a : agent){
             if(a.getAgentX() == xnew && a.getAgentY() == ynew){
@@ -60,13 +93,22 @@ public class Agent{
 
     
 
-    /*
-     * cette fonction prend un tableau de dioxyde de carbone, un avreage de dioxyde de carbone, 
-     * une quantité désirée de dioxyde de carbone, une liste d’agents et une place qu’ils sont dans 
+    /**
+     *
+     * this function represents what the agent can do during the year
+     * first we find where is the least amount of carbon
+     * then we either go to that place or to a random one (based on a given probability)
+     * if a current agent can do there it goes there:
+     * - if there is a coal mine or nothing, they close it and build a forest 
+     * - if there is a forest they plant more trees 
+     * each action generates an amount of co2 we can absorb to better the enviroment
      * 
-     * compte tenu de ces variables, un agent se déplace là où il se trouve 
-     * et tente de planter des forêts ou de détruire des mines afin d’atteindre la quantité désirée de dioxyde de carbone
-     * cette fonction représente ce que l’agent peut faire dans l’année
+     * @param carbon - array of carbon dioxide - tells us how much carbon there is in each place in a grid
+     * @param carbonAvreage - an avreage of carbon dioxide in one place on a grid
+     * @param carbonGoal - a desired amount of carbon dioxide in one place on a grid
+     * @param agent - a list of one type of agents - good agents
+     * @param earth - our enviroment which contains a grid
+     * 
      */
     public void fixingClimateChange(long[][] carbon, double carbonAvrege, double carbonGoal, ArrayList<Agent> agent, Earth earth){
         
@@ -119,10 +161,21 @@ public class Agent{
 
     }
 
-    /*c
-    ette fonction prend un tableau de dioxyde de carbone, une liste d’agents et une place 
-    si un agent se trouve dans une mine, il produit plus de dioxyde de carbone 
-    s’il est dans une forêt, il la détruit */
+
+    /**
+     *
+     * this function represents what the agent can do during the year
+     * we generate a random place
+     * if it's close enough : we check if it's free and if it is: 
+     * - if there is a coal mine, they make it generate more co2
+     * - if probability is on our side and there is a forest, they cut out all the trees
+     * each action generates an amount of co2 that worsens out enviroment
+     * 
+     * @param carbon - array of carbon dioxide - tells us how much carbon there is in each place in a grid
+     * @param agent - a list of one type of agents - bad agents
+     * @param earth - our enviroment which contains a grid
+     * 
+     */
     public void makingClimateChangeWorse(long[][] carbon, ArrayList<Agent> agent, Earth earth){
 
         int x = (int)(Math.random()*carbon.length);

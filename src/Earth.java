@@ -1,36 +1,51 @@
 import java.util.Random;
 import java.util.ArrayList;
 
+/**
+ * class Earth contains a grid on which we place mines and forests - it is our enviroment
+ * Earth takes care of what CO2 does on our grid
+ */
+
 public class Earth {
 
-  /*
-   * la classe Earth qui contient le terrain et les reressources 
-   * elle fait la gestion de dioxyde de carbone dans le terrain
+  /**
+   * @param INSTANCE is a singelton, we can only initialise one enviroment
+   * @param terrain our grid
+   * @param numForests number of forests
+   * @param numMines number of coal mines
    */
-
   private static final Earth INSTANCE = new Earth();
   private Terrain terrain;
-  //variable pour le nombre de forêts
   public static int numForests = 0;
-  //variable pour le nombre de mines
   public static int numMines = 0;
   
-  //constructeur pour la classe Earth 
+  /**
+   * constructor for our singelton 
+   */
   private Earth() {
     terrain = new Terrain(20,20);
-
   }
 
+  /**
+   * creates a singelton for our enviroment
+   * @return singelton
+   */
   public static Earth getInstance(){ return INSTANCE; }
 
-  //cette fonction renvoie le terrain
+  /**
+   * returns our grid with ressources 
+   * @return grid with ressources 
+   */
   public Terrain getTerrain(){
     return terrain;
   }
 
-  /*cette fonction prend une ressource et une place dans le terrain
-    si cet endroit est vide, la ressource est placée
-  */
+  /**
+   * if a place is empty, place a ressource
+   * @param ressource ressource - coal mine or a forest
+   * @param i first coordinate
+   * @param j second coordinate
+   */
   public void plantRessource(Ressource ressource, int i, int j) {
     if (!terrain.caseEstVide(i,j)){
         return;
@@ -42,7 +57,10 @@ public class Earth {
   }
 
   
-  /*cette fonction prend une ressource et la place au premier endroit libre dans le terrain */
+  /**
+   * place a ressource on a first empty place in our grid
+   * @param ressource ressource - coal mine or a forest
+   */
   public void plantRessource(Ressource ressource) {
     for(int i = 0; i < terrain.nbLignes; i++){
         for(int j = 0; j < terrain.nbColonnes;j++){
@@ -60,10 +78,11 @@ public class Earth {
   
 
 
-  /*
-  cette fonction prend une forêt et plante une nouvelle forêt dans le terrain si la dispersion des graines a réussi,
-  en utilisant la fonction de densité elle choisit un endroit dans le terrain pour le placer
-  */
+ 
+  /**
+   * plants forests in our enviroment using rules of seed dispersal (and uses probability density function)
+   * @param forest forest we will use for seed dispesal
+   */
   public void plantForestsBySeedDispersal(Forest forest) {
 
    
@@ -113,10 +132,10 @@ public class Earth {
      
     }
 
-    /*
-     * cette fonction prend un tableau de dioxyde de carbone (dans chaque cas il y a une certaine quantité) 
-     * et basé sur les ressources présentes dans le tableau 
-     * il met à jour combien de dioxyde de carbone il y a maintenant
+
+    /**
+     * takes an array with how much CO2 there is on each place in the grid and according to what ressources are on the grid we update the array
+     * @param carbonDis how much CO2 there is on each place in the grid
      */
     public void carbonProduction(long[][] carbonDis){
     for(int i = 0; i < terrain.nbLignes; i++){
@@ -132,8 +151,9 @@ public class Earth {
     }
     }
 
-    /*
-     * cette fonction prend un tableau de dioxyde de carbone et le disperse 
+    /**
+     * disperses CO2 in our enviroment
+     * @param carbonDis how much CO2 there is on each place in the grid
      */
     public void carbonDispersion(long[][] carbonDis){
         //same as terrain
@@ -156,8 +176,10 @@ public class Earth {
 
     }
 
-    /*
-     * cette fonction prend un tableau de dioxyde de carbone et renvoie combien il y en a en moyenne dans une case
+    /**
+     * how much CO2 there is on avreage in one case
+     * @param carbon how much CO2 there is on each place in the grid
+     * @return CO2 avreage in one case
      */
     public long carbonAvrege(long[][] carbon){
         long max = 0;
@@ -171,18 +193,27 @@ public class Earth {
         return h;
     }
 
-    /*cette fonction prend un tableau de dioxyde de carbone et renvoie quelle est la quantité désirée dans une case */
+    /**
+     * how much CO2 one case in the grid can handle (if we surpass this our enviroment is affected negatively)
+     * @param carbon how much CO2 there is on each place in the grid
+     * @return how much CO2 one case in the grid can handle 
+     */
     public long carbonGoal(long[][] carbon){
         return (long)(-1.00*103921568.00)/(terrain.nbColonnes*terrain.nbLignes);
     }
     
         
-    //cette fonction affiche le terrain 
+    /**
+     * prints our enviroment/grid
+     */
     public void afficheEarth(){
         terrain.affiche(4);
     }
 
-    //this function returns true is the terrain is full
+    /**
+     * returs true if each place in the grid is occupied
+     * @return true or false
+     */
     public boolean isFull(){
         for(int i = 0; i < terrain.nbLignes;i++){
             for(int j = 0; j < terrain.nbColonnes; j++){
